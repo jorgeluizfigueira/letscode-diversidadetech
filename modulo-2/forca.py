@@ -145,37 +145,42 @@ def main():
         else:
             erros = 0
             letras_escolhidas = []
-            while erros < 6:
+            while True:
                 print('{:=^20}'.format('Jogo da Forca'))
                 dica(classe_palavra, palavra_sorteada)
                 if letras_escolhidas:
                     print(f'Letras já escolhidas:{" ".join(letras_escolhidas)}')
                 print(grafico_forca[erros])
                 print(palavra_secreta(palavra_sorteada,letras_escolhidas))
-                letra_usuario = leia_letra('Digite uma letra: ')
+                if palavra_secreta(palavra_sorteada,letras_escolhidas) == palavra_sorteada:
+                    print(f'Parabéns, você acertou!')
+                    break
+
+                if erros < 6:
+                    letra_usuario = leia_letra('Digite uma letra: ')
             
-                if letra_usuario not in letras_escolhidas:
-                    letras_escolhidas.append(letra_usuario)
+                    if letra_usuario not in letras_escolhidas:
+                        letras_escolhidas.append(letra_usuario)
 
-                    if letra_usuario not in palavra_sorteada:
-                        erros += 1
-                        print(f'Letra {letra_usuario} não faz parte da palavra.')
+                        if letra_usuario not in palavra_sorteada:
+                            erros += 1
+                            print(f'Letra {letra_usuario} não faz parte da palavra.')
+                            sleep(2)
+
+                    else:
+                        print(f'Você já escolheu a letra {letra_usuario}!')    
                         sleep(2)
-
-                    if palavra_secreta(palavra_sorteada,letras_escolhidas) == palavra_sorteada:
-                        print(f'Parabéns, você acertou! A palavra é {palavra_sorteada}.')
-                        break
-                else:
-                    print(f'Você já escolheu a letra {letra_usuario}!')    
-                    sleep(2)
-                limpa_tela()
+                    limpa_tela()
                 
-            if erros == 6:
-                print(f'Que pena! Você perdeu. A palavra era : {palavra_sorteada}')
+                else:
+                    print(f'Que pena! Você perdeu. A palavra era : {palavra_sorteada}')
+                    break
                 
             continuar = leia_resposta('Deseja continuar (s/n)? ')
             limpa_tela()
             if not continuar:
+                print('Jogo Encerrado.')
+                sleep(2)
                 break
 
 
