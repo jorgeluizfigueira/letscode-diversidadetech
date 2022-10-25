@@ -136,52 +136,62 @@ def leia_resposta(msg:str) -> bool:
     else: 
         return False
 
-def main():
+
+def jogar(classe_palavra, palavra_sorteada, letras_escolhidas, erros):
     while True:
-        classe_palavra, palavra_sorteada = sorteia_palavra()
-        if not classe_palavra:
-            print('Arquivo de palavras ausente!')
+        # Muito bom essa parte
+        print('{:=^20}'.format('Jogo da Forca'))
+        dica(classe_palavra, palavra_sorteada)
+
+        if letras_escolhidas:
+            # Modificado para ficar mais claro para a pessoa jogadora
+            print(f'Letras já escolhidas: {"-".join(letras_escolhidas)}')
+        print(grafico_forca[erros])
+        print(palavra_secreta(palavra_sorteada,letras_escolhidas))
+
+        if palavra_secreta(palavra_sorteada,letras_escolhidas) == palavra_sorteada:
+            print(f'Parabéns, você acertou!')
             break
-        else:
-            erros = 0
-            letras_escolhidas = []
-            while True:
-                print('{:=^20}'.format('Jogo da Forca'))
-                dica(classe_palavra, palavra_sorteada)
-                if letras_escolhidas:
-                    print(f'Letras já escolhidas:{" ".join(letras_escolhidas)}')
-                print(grafico_forca[erros])
-                print(palavra_secreta(palavra_sorteada,letras_escolhidas))
-                if palavra_secreta(palavra_sorteada,letras_escolhidas) == palavra_sorteada:
-                    print(f'Parabéns, você acertou!')
-                    break
 
-                if erros < 6:
-                    letra_usuario = leia_letra('Digite uma letra: ')
-            
-                    if letra_usuario not in letras_escolhidas:
-                        letras_escolhidas.append(letra_usuario)
+        if erros < 6:
+            letra_usuario = leia_letra('Digite uma letra: ')
 
-                        if letra_usuario not in palavra_sorteada:
-                            erros += 1
-                            print(f'Letra {letra_usuario} não faz parte da palavra.')
-                            sleep(2)
+            if letra_usuario not in letras_escolhidas:
+                letras_escolhidas.append(letra_usuario)
 
-                    else:
-                        print(f'Você já escolheu a letra {letra_usuario}!')    
-                        sleep(2)
-                    limpa_tela()
-                
-                else:
-                    print(f'Que pena! Você perdeu. A palavra era : {palavra_sorteada}')
-                    break
-                
-            continuar = leia_resposta('Deseja continuar (s/n)? ')
-            limpa_tela()
-            if not continuar:
-                print('Jogo Encerrado.')
+                if letra_usuario not in palavra_sorteada:
+                    erros += 1
+                    print(f'Letra {letra_usuario} não faz parte da palavra.')
+                    sleep(2)
+
+            else:
+                print(f'Você já escolheu a letra {letra_usuario}!')    
                 sleep(2)
-                break
+            limpa_tela()
+
+        else:
+            print(f'Que pena! Você perdeu. A palavra era : {palavra_sorteada}')
+            break
+
+
+def main():
+    continuar_jogo = True
+    while continuar_jogo:
+      classe_palavra, palavra_sorteada = sorteia_palavra()
+      if not classe_palavra:
+        raise FileNotFoundError('Arquivo de palavras ausente!')
+      erros = 0
+      letras_escolhidas = []
+      jogar(classe_palavra, palavra_sorteada, letras_escolhidas, erros)
+
+      continuar = leia_resposta('Deseja continuar (s/n)? ')
+      limpa_tela()
+      if not continuar:
+          print('Jogo Encerrado.')
+          sleep(2)
+          continuar_jogo = False
+      else:
+          continuar_jogo = True
 
 
 main()
