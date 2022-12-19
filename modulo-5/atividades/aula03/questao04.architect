@@ -53,10 +53,10 @@
   <table id="TAB11" populated="true" UUID="fab6471c-f00a-495a-9882-1d16e2fe78b2" name="dependente" objectType="TABLE" physicalName="dependente" >
    <remarks></remarks>
    <folder id="FOLTAB111" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL12" populated="true" UUID="88f1ce8d-3bd4-4ea1-b0ff-f230db7464dd" autoIncrement="false" autoIncrementSequenceName="funcionario_id_funcionario_seq" defaultValue="" name="id_funcionario" nullable="0" physicalName="id_funcionario" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL12" populated="true" UUID="30de5576-c787-47cc-9756-184293986770" autoIncrement="true" autoIncrementSequenceName="dependente_id_dependente_seq" defaultValue="" name="id_dependente" nullable="0" physicalName="id_dependente" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL13" populated="true" UUID="30de5576-c787-47cc-9756-184293986770" autoIncrement="true" autoIncrementSequenceName="dependente_id_dependente_seq" defaultValue="" name="id_dependente" nullable="0" physicalName="id_dependente" precision="0" primaryKeySeq="1" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL13" populated="true" UUID="88f1ce8d-3bd4-4ea1-b0ff-f230db7464dd" autoIncrement="false" autoIncrementSequenceName="funcionario_id_funcionario_seq" defaultValue="" name="id_funcionario" nullable="0" physicalName="id_funcionario" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL14" populated="true" UUID="d47916c3-131e-417b-bded-c4069a1f64e2" autoIncrement="false" autoIncrementSequenceName="dependente_nome_seq" defaultValue="" name="nome" nullable="0" physicalName="nome" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -72,17 +72,16 @@
     </folder>
     <folder id="FOLTAB114" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX16" populated="true" UUID="f7731010-a8f3-416e-b3bc-bb090e8285a4" clustered="false" name="dependente_pk" physicalName="dependente_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC17" populated="true" UUID="e11c8470-1047-4296-8bb5-e35aa6aca77c" ascendingOrDescending="UNSPECIFIED" column-ref="COL12" name="id_funcionario" physicalName="id_funcionario" />
-     <index-column id="IDC18" populated="true" UUID="17b304a1-9010-4c44-9e7e-6eee64d09e2e" ascendingOrDescending="UNSPECIFIED" column-ref="COL13" name="id_dependente" physicalName="id_dependente" />
+     <index-column id="IDC17" populated="true" UUID="17b304a1-9010-4c44-9e7e-6eee64d09e2e" ascendingOrDescending="UNSPECIFIED" column-ref="COL12" name="id_dependente" physicalName="id_dependente" />
     </index>
    </folder>
   </table>
   <relationships>
-   <relationship id="REL19" populated="true" UUID="c7c6e292-3e2d-4422-9e5d-6efcd7b55d51" deferrability="7" deleteRule="3" fk-table-ref="TAB11" fkCardinality="7" identifying="true" name="funcionario_dependente_fk" physicalName="funcionario_dependente_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP20" populated="true" UUID="a83529dd-071b-498b-845b-18f35f73f669" fk-column-ref="COL12" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
+   <relationship id="REL18" populated="true" UUID="c7c6e292-3e2d-4422-9e5d-6efcd7b55d51" deferrability="7" deleteRule="3" fk-table-ref="TAB11" fkCardinality="7" identifying="false" name="funcionario_dependente_fk" physicalName="funcionario_dependente_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP19" populated="true" UUID="a83529dd-071b-498b-845b-18f35f73f669" fk-column-ref="COL13" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
    </relationship>
-   <relationship id="REL21" populated="true" UUID="30c6b41a-b021-44aa-b240-4565b8abcdf5" deferrability="7" deleteRule="3" fk-table-ref="TAB11" fkCardinality="7" identifying="false" name="parentesco_dependente_fk" physicalName="parentesco_dependente_fk" pk-table-ref="TAB6" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP22" populated="true" UUID="50d0ccc4-d057-4195-a66c-f555431ed0d7" fk-column-ref="COL15" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL7" />
+   <relationship id="REL20" populated="true" UUID="30c6b41a-b021-44aa-b240-4565b8abcdf5" deferrability="7" deleteRule="3" fk-table-ref="TAB11" fkCardinality="7" identifying="false" name="parentesco_dependente_fk" physicalName="parentesco_dependente_fk" pk-table-ref="TAB6" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP21" populated="true" UUID="50d0ccc4-d057-4195-a66c-f555431ed0d7" fk-column-ref="COL15" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL7" />
    </relationship>
   </relationships>
  </target-database>
@@ -93,8 +92,8 @@
   <table-pane table-ref="TAB1" x="133" y="65" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB6" x="414" y="60" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB11" x="246" y="242" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-link relationship-ref="REL19" pkConnection="0.5764192139737991" fkConnection="0.40425531914893614" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
-  <table-link relationship-ref="REL21" pkConnection="0.3920704845814978" fkConnection="0.6510638297872341" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL18" pkConnection="0.5764192139737991" fkConnection="0.40425531914893614" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL20" pkConnection="0.3920704845814978" fkConnection="0.6510638297872341" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
  </play-pen>
  <critic-manager>
   <critic-grouping platformType="Generic" enabled="true">
