@@ -17,3 +17,7 @@ Também serviram como tecnologias auxiliares o *SQL Power Architect*, usado dura
   ```shell
   pip install -r requirements.txt
   ```
+    
+## Spotify Credentials
+    
+https://developer.spotify.com/dashboard/
