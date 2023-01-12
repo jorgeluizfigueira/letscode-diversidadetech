@@ -8,7 +8,7 @@ from database import *
 
 import re
 
-# Autenticação Spotfy
+# Autenticação Spotify
 with open('spotify_credentials.txt') as f:
     lines = f.read()
     client_id, client_secret = lines.split('\n')
@@ -18,8 +18,7 @@ client_credentials_manager = SpotifyClientCredentials(client_id, client_secret)
 #Create Spotify object 
 sp  = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-# 
-
+# Obtém os dados das músicas da playlist do usuário
 def get_playlist_tracks(username,playlist_id):
     results = sp.user_playlist_tracks(username,playlist_id)
     tracks = results['items']
@@ -38,16 +37,19 @@ def registra_playlist(con,id_playlist,id_usuario,nome_playlist):
 
 def registra_musica(con,id_artista,id_musica,id_playlist,
                     nome_artista,nome_musica,duracao_ms):
+   
     sql = f"select exists(select 1 from artistas where id_artista = '{id_artista}')"
     artista_cadastrado = bool(con.consultar(sql)[0][0])
     if not(artista_cadastrado):
         sql = f"insert into artistas values ('{id_artista}','{nome_artista}');"
         con.manipular(sql)
+        
     sql = f"select exists(select 1 from musicas where id_musica = '{id_musica}')"
     musica_cadastrada = bool(con.consultar(sql)[0][0])
     if not(musica_cadastrada):
         sql = f"insert into musicas values ('{id_musica}','{id_artista}','{nome_musica}','{duracao_ms}');"
         con.manipular(sql)
+        
     sql = f"insert into musicas_playlist values (default,'{id_playlist}','{id_musica}');"
     con.manipular(sql)
     
